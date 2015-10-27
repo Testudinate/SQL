@@ -10,3 +10,5 @@ create_table_test_peak_hour - исходные данные для запрос�
 use_of_window_functions_v.1 - использования оконных функций row_number, lag и lead (PostgreSQL).
 
 accumulation_of_the_amount - накопление суммы с помощью оконной функции (PostgreSQL).
+
+selection_of_subordinates - выборка подчиненных (Oracle -> ANSI)
