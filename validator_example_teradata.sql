@@ -34,8 +34,8 @@ BEGIN
   -- Name    :  validator
   -- Purpose :
   -- Version :
-  --            1.0 2014-03-05 Klevtsov S.
-  -- Author  :  Klevtsov Stanislav
+  --            1.0 2014-03-05
+  -- Author  
 
  -- ================  DECLARATION SECTION  ================
     DECLARE   v_step         INTEGER DEFAULT 0;
