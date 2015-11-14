@@ -1,10 +1,10 @@
-2.Выбрать всех работников, учившихся в Москве.
+2.Выбрать всех работников, учившихся в Samara.
 
 select r.fio
-  from RABOT as r
-  join EDUCATION as e on e.idr = r.idr
-  join VUZ as v on v.idv = e.idv
-               and v.city = 'Москва'
+  from RABOT r
+  join EDUCATION e on e.idr = r.idr
+  join VUZ v on v.idv = e.idv
+               and v.city = 'Samara';
                
 
 
