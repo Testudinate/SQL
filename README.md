@@ -22,3 +22,4 @@ WM_concat(поле) - функция, которая поможет соедин
 LISTAGG(поле,',') - функция, которая поможет соединить строки, можно указывать разделитель (11g R2)
 
 http://www.interface.ru/fset.asp?Url=/oracle/anal-itiv.htm
+http://notes84.blogspot.ru/2014/03/oracle.html
