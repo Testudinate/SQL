@@ -23,3 +23,4 @@ LISTAGG(поле,',') - функция, которая поможет соеди
 
 http://www.interface.ru/fset.asp?Url=/oracle/anal-itiv.htm
 http://notes84.blogspot.ru/2014/03/oracle.html
+https://www.toadworld.com/platforms/oracle/w/wiki/2691.dbms-lob-write
