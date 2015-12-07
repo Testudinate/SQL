@@ -3,18 +3,18 @@
 но возникает небольшая проблемка с работой данного алгоритма, 
 когда количество записей 2, то данные разносятся в 1 и 3 столбец.
 
-1. Пример ( некорректный вывод в итоге для 2 -ух записей )
+1. Пример ( некорректный вывод для 2 -ух записей )
 
 with a as
   (select 1 p from dual union all
-   select 22 p from dual union all
-   select 4 p from dual union all
-   select 44 p from dual union all
-   select 2 p from dual union all
-   select 16 p from dual union all
-   select 7 p from dual union all
-   select 99 p from dual union all
-   select 100 p from dual
+   select 22 p from dual --union all
+   --select 4 p from dual union all
+   --select 44 p from dual union all
+   --select 2 p from dual union all
+   --select 16 p from dual union all
+   --select 7 p from dual union all
+   --select 99 p from dual union all
+   --select 100 p from dual
    ),
    b as (select rownum row_cnt , a.p from a) 
 select ROW_CNT ROW_CNT2,p,1 lvl_1,lvl,ROW_CNT 
