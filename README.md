@@ -20,3 +20,5 @@ selection_of_subordinates - выборка подчиненных (Oracle -> ANS
 WM_concat(поле) - функция, которая поможет соединить строки с наименьшими усилиями (разделить ',')
 
 LISTAGG(поле,',') - функция, которая поможет соединить строки, можно указывать разделитель (11g R2)
+
+http://www.interface.ru/fset.asp?Url=/oracle/anal-itiv.htm
