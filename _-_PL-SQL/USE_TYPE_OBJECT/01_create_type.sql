@@ -9,7 +9,7 @@ CREATE TYPE address_typ AS OBJECT
  postal_code   VARCHAR2(6) 
 );
 /
---1.2 создание объектного типа
+--1.2 создание объектного типа (конструктор)
 CREATE TYPE employee_typ AS OBJECT 
 (
  employee_id    NUMBER(6),
