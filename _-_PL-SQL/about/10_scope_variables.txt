@@ -1,0 +1,13 @@
+Область видимости переменных
+
+x BINARY_INTEGER;
+BEGIN
+                      область видимости x
+  DECLARE 
+    y NUMBER;
+    BEGIN
+                     область видимости y
+      ...
+    END;
+  ...
+END;
