@@ -1,0 +1,12 @@
+Процедура или функция
+
+Процедура          Функция 
+
+IN        <-    -> IN
+OUT       ->
+IN OUT    <->   
+
+(DECLARE)       { (DECLARE)
+BEGIN         <-{ BEGIN
+EXCEPTION       { EXCEPTION
+END;            { END;
