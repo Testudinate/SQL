@@ -1,0 +1,32 @@
+Выборка данных:синтаксис
+
+Для выборки данных их базы данных используется команда SELECT 
+
+SELECT список_выборки INTO имя_переменной \ имя_записи
+FROM таблица
+WHERE условие;
+
+--Предложение INTO обязательно.
+--Должна быть возвращена только одна строка.
+--Доступен полный синтаксис SELECT.
+
+Примеры:
+
+1) Выборка даты размещения заказа и даты отгрузки:
+
+PROCEDURE ship_date
+  (v_ord_id IN NUMBER)
+IS 
+  v_date_ordered s_ord.date_ordered%TYPE;
+  v_date_shipped s_ord.date_shipped%TYPE;
+BEGIN
+  SELECT date_ordered, date_shipped
+    INTO v_date_ordered, v_date_shipped
+    FROM s_ord
+   WHERE id=v_ord_id;
+   
+  ...
+END ship_date;
+
+51 странца!!!!!!!!!!!!!!!
+    
