@@ -8,3 +8,25 @@
 3. EXCEPTION - необязательно
 -Действия, выполняемые при возникновении ошибок
 4. END; - необязательно
+
+Пример:
+
+DECLARE 
+   v_product_id     s_product.id%TYPE;
+BEGIN
+   SELECT id
+     INTO v_product_id
+     FROM s_product
+    WHERE id = &p_product_id;
+    
+   DELETE FROM s_inventory
+    WHERE product_id = v_product_id;
+   
+   COMMIT;
+EXCEPTION
+  WHEN OTHERS THEN
+    ROLLBACK;
+    INSERT INTO exception_table (message)
+      VALUES ('Some error occurred in the database.');
+    COMMIT;
+END;
