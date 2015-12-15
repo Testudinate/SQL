@@ -1,0 +1,10 @@
+Повышение производительности PL\SQL
+
+Пример 1:
+
+Приложение - SQL;SQL;SQL - Другие DBMS
+
+Пример 2:
+
+Приложение - SQL;IF...THEN SQL ELSE SQL END IF; SQL - Oracle c PL\SQL
+
