@@ -1,0 +1,45 @@
+Синтаксис создания пакета 
+
+Пакеты создаются интерактивно в SQL*PLUS или SQL*DBA с помощью команд CREATE PACKAGE и CREATE PACKAGE BODY.
+
+Пример: В пакет формируем тип записи, курсор и две процедуры управления кадрами: 
+
+CREATE PACKEGE emp_actions AS --спецификация 
+  TYPE EmpRecTyp IS RECORD ( emp_id INTEGER, salary REAL);
+  CURSOR desc_salary (emp_id NUMBER) RETURN EmpRecTyp;
+  
+  PROCEDURE hire_employee
+  (ename CHAR,
+   job CHAR,
+   mgr NUMBER,
+   sal NUMBER,
+   comm NUMBER,
+   deptno NUMBER);
+   
+  PROCEDURE fire_employee (emp_id NUMBER);
+  END emp_actions;
+  
+Синтаксис создания пакета 
+
+CREATE PACKAGE BODY emp_actions AS --тело
+  CURSOR desc_salary (emp_id NUMBER ) RETURN EmpRecTyp IS 
+    SELECT empno, sal FROM emp ORDER BY sal DESC;
+    
+  PROCEDURE hire_employee
+  ( ename CHAR,
+    job CHAR,
+    mgr NUMBER,
+    sal NUMBER,
+    comm NUMBER,
+    deptno NUMBER) IS 
+  BEGIN
+    INSERT INTO emp VALUES (empno seq.NEXTVAL, ename, job,
+      mgr,SYSDATE, sal, comm, deptno);
+  END hire_employee;
+  
+  PROCEDURE fire_employee (emp_id NUMBER) IS 
+  BEGIN 
+    DELETE FROM emp WHERE empno = emp_id;
+  END fire_employee;
+  
+END emp_actions;
