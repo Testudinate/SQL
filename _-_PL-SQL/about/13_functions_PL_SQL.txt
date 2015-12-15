@@ -1,0 +1,19 @@
+Функции в PL\SQL
+
+Доступны:
+
+--Числовые 
+--Символьные                      }
+--Перобразования типов            }  Как в SQL
+--Работы с датами                 }
+
+Недоступны:
+--GREATEST
+--LEAST
+--групповые 
+
+v_mailing_address := v_name||CHR(10)||
+  v_address||CHR(10)||v_country||CHR(10)||
+  v_zip_code;
+  
+v_last_name := UPPER (v_last_name);
