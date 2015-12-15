@@ -1,0 +1,20 @@
+Вызов блока
+
+PL\SQL> change_salary (17, 1000);
+
+PROCEDURE process_sal
+  (v_emp_id IN NUMBER,
+   v_new_salary IN NUMBER)
+IS 
+BEGIN
+
+  change_salary(v_emp_id, v_new_salary);
+  --invoking procedure change_salary
+  ...
+
+END;
+
+PL\SQL> CREATE NUMBER x PRECISION 4
+PL\SQL> :x := tax(100);
+PL\SQL> TEXT_IO.PUT_LINU (TO_CHAR(:x));
+
