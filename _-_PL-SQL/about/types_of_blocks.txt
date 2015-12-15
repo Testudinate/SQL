@@ -1,0 +1,39 @@
+Типы блоков PL\SQL
+
+1. Анонимный 
+
+[DECLARE]
+
+BEGIN
+--statements
+
+[EXCEPTION]
+
+END;
+
+2. Процедура 
+
+PROCEDURE name 
+IS 
+
+BEGIN
+--statements
+
+[EXCEPTION]
+
+END;
+
+3. Функция
+
+FUNCTION name
+RETURN datatype
+IS 
+BEGIN
+--statements
+  RETURN value;
+[EXCEPTION]
+
+END;
+
+
+
