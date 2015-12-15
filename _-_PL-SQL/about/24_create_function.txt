@@ -1,0 +1,16 @@
+Создание функции
+
+FUNCTION name [(parameter, ...)]
+  RETURN datatype;
+IS
+pl\sql_block;
+
+Пример:
+
+FUNCTION tax (v_value IN NUMBER)
+  RETURN NUMBER
+IS 
+BEGIN
+ RETURN (v_value * 0.07);
+END;
+
