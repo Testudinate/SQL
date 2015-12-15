@@ -1,0 +1,47 @@
+I. Составные типы данных 
+
+1. Таблицы PL\SQL 
+
+Первичный ключ (1,2,3, ... ) Значение ( Jones,Smith,Maduro, ... )
+BINARY_INTEGER               Скалярный тип
+
+2. Записи 
+     
+         Поле1          Поле2           Поле3
+         
+II. Примеры:
+
+1. Создание таблицы PL\SQL
+
+TYPE type_name IS TABLE OF datatype [NOT NULL] INDEX BY BINARY_INTEGER;
+identifier type_name;
+
+...
+TYPE name_table_type IS TABLE OF VARCHAR2(25) INDEX BY BINARY_INTEGER;
+
+first_name_table name_table_type;
+last_name_table name_table_type;
+
+...
+
+2. Создание записи
+
+TYPE type_name IS RECORD 
+  (field_name1 field_type
+  [NOT NULL {:=|DEFAULT} expr],
+   field_name2 field_type
+  [NOT NULL {:=|DEFAULT} expr],...);
+  identifier type_name;
+  
+...
+  TYPE emp_record_type IS RECORD
+   ( last_name VARCHAR2(25),
+     first_name VARCHAR2(25),
+     gender CHAR(1));
+  employee_recordemp_record_type;
+  
+...
+  dept_record  s_dept%ROWTYPE;
+  emp_record   s_emp%ROWTYPE;
+  
+  
