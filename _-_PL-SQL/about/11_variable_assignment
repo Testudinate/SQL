@@ -1,0 +1,39 @@
+Присвоение значений переменным 
+
+Пример 1:
+
+identifier := expr;
+plsql_table_name (primary_key_value) :=expr;
+plsql_record_name.field_name :=expr;
+
+v_max_sal :=v_sal;
+last_name_table (3) := 'Marudo';
+emp_record.last_name := 'Marudo';
+emp_record.first_name := 'Elena';
+emp_record.gender := 'F';
+
+Пример 2:
+
+DECLARE 
+  v_weight NUMBER(3) :=600;
+  v_message VARCHAR2(255) := 'Product 10012';
+  
+  BEGIN
+            --Sub-Block
+  DECLARE 
+    v_weight NUMBER(3) :=1;
+    v_message VARCHAR2(255) := 'Product 11001';
+    v_new_locn VARCHAR2(50) :='Europe';
+    
+    BEGIN
+    
+      v_weight := v_weight + 1;
+      v_new_locn := 'Western '|| v_new_locn;
+    
+    END;
+  
+  v_weight := v_weight + 1;
+  v_message : = v_message || ' is in stock';
+  v_new_locn := 'Western '|| v_new_locn;
+  
+END;
