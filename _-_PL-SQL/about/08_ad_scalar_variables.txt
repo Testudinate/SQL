@@ -1,0 +1,30 @@
+Объявление скалярных переменных 
+
+identifier [CONSTANT] datatype [NOT NULL] [:= | DEFAULT expr];
+
+-- Не имеют компонент 
+-- Хранят единственное значение
+-- Основные типы:
+----BINARY_INTEGER
+----NUMBER[(m,n)]
+----CHAR[(m)]
+----LONG
+----LONG RAW
+----VARCHAR2(m)
+----DATE
+----BOOLEAN
+
+Примеры
+
+v_gender     CHAR(1);
+v_count      BINARY_INTEGER :=0;
+v_total_sal  NUMBER(9,2) :=0;
+v_order_date DATE:=SYSDATE + 7;
+c_tax_rate   CONSTANT NUMBER(3,2) := 8.25
+v_valid      BOOLEAN NOT NULL := TRUE
+...
+   v_last_name s_emp.last_name%TYPE
+   v_first_name s_emp.first_name%TYPE
+   v_balance NUMBER(7,2);
+   v_minimum_balance v_balance%TYPE :=10;
+...
