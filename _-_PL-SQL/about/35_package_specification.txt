@@ -1,0 +1,26 @@
+Спецификация пакета
+
+Если спецификация пакета объявляет лишь типы, константы, переменные и исключения, тело пакета не нужно.
+
+Пример пакета, состоящего только из спецификации:
+
+PACKEAGE trans_data IS
+  TYPE TimeTyp IS RECORD
+    (minute SMALLINT,
+     hour SMALLINT);
+  TYPE TransTyp IS RECORD
+    (category VARCHAR2,
+     account INTEGER,
+     amount REAL,
+     time TimeTyp);
+  minimum_balance CONSTANT REAL :=10.00;
+  number_processed INTEGER;
+  insufficient_funds EXCEPTION;
+
+END trans_data;
+
+Пакет trans_data не нуждается в теле, потому что типы, константы, 
+переменные и исключения не требуют реализации.
+
+Такие пакеты позволяют определять глобальные переменные - для использования подпрограммами и 
+триггерами - которые существуют на протяжении всей сессии.
