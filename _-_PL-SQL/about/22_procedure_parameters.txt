@@ -1,0 +1,30 @@
+Параметры процедуры 
+
+Вызывающая среда ---> Процедура 
+                             |
+                            IN
+                            OUT
+                           IN OUT
+                             |
+                          (DECLARE)
+                            BEGIN
+                             
+                            EXCEPTION
+                             
+                            END;
+                            
+Пример создания процедуры:
+
+PROCEDURE change_salary 
+  (v_emp_id IN NUMBER,
+   v_new_salary IN NUMBER)
+IS 
+BEGIN
+  
+   UPDATE s_emp
+   SET salary = v_new_salary
+   WHERE id = v_emp_id;
+   
+   COMMIT;
+   
+END change_salary;
