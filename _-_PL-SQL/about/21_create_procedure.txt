@@ -1,0 +1,10 @@
+Создание процедуры
+
+PROCEDURE name [ (parameter, ...)]
+IS
+pl\sql_block;
+
+parameter_name [IN\OUT\IN OUT] datatype [{:= | DEFAULT} expr ]
+
+При создании из SQL*PLUS необходимо пользоваться командой CREATE OR REPLACE
+
