@@ -1,0 +1,20 @@
+1)Команды commit и rollback
+
+Транзакция начинается с первой команды DML, следующей за COMMIT или ROLLBACK.
+
+Транзакция завершается явно командой COMMIT или ROLLBACK.
+
+2)Управление транзациями: пример
+
+BEGIN
+    INSERT INTO temp(num_col1,num_col2,char_col)
+      VALUES (1,1,'ROW 1');
+    SAVEPOINT a;
+    INSERT INTO temp(num_col,num_col2,char_col)
+      VALUES (2,2,'ROW 2');
+    SAVEPOINT b;
+    INSERT INTO temp(num_col,num_col2,char_col)
+      VALUES (3,3,'ROW 3');
+    SAVEPOINT c;
+  ROLLBACK TO SAVEPOINT b;
+END;
