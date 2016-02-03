@@ -28,3 +28,15 @@
 |FALSE |TRUE  |FALSE |NULL |
 |NULL  |TRUE  |NULL  |NULL |
 ----------------------------
+
+2) Логические условия 
+
+Каково значение v_flag в каждом случае ? 
+
+V_flag :=v_reorder_flag AND v_anailable_flag
+
+V_reorer_flag   V_anaible_flag    VALUE
+TRUE            TRUE
+TRUE            FALSE
+NULL            TRUE
+NULL            FALSE
