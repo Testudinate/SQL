@@ -1,0 +1,15 @@
+Пример 3:
+
+Выборка всей информации об указанном отделе
+
+PROCEDURE all_dept
+    (v_dept_id IN NUMBER)
+IS 
+    dept_record s_dept%ROWTYPE;
+BEGIN
+    SELECT * 
+    INTO dep_record --запись PL\SQL
+    FROM s_dept
+    WHERE id = v_dept_id;
+  ...
+END all_dept;
