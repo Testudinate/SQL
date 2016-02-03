@@ -1,0 +1,29 @@
+Оператор IF
+
+Действия можно выполнить выборочно в зависимости от определённых условий:
+
+IF condition THEN
+  Statements;
+[ELSIF condition THEN
+  Statements;]
+[ELSE 
+  Statements;]
+END IF;
+
+1) ELSIF - одно слово 
+2) END IF - два слова
+3) Предложение ELSE может быть только одно 
+
+Примеры: 
+
+IF V_last_name = 'Dumas' THEN
+    v_job := 'Sales Representative';
+    v_region_id:=35;
+END IF;
+...
+IF v_date_shipped - v_date_ordered <5 THEN
+    v_ship_flag:='Acceptable';
+ELSE
+    v_ship_flag:='Unacceptable';
+END IF;
+...
