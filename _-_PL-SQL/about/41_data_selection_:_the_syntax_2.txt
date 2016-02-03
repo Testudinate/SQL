@@ -1,0 +1,17 @@
+Пример:
+
+Вывод суммы заработной платы всех сотрудников указанного отдела
+
+
+FUNCTION sum_emp
+    (v_dept_id IN NUMBER)
+  RETURN NUMBER
+IS 
+    v_sum_salary s_emp.salary%TYPE;
+BEGIN
+    SELECT SUM(salary) - групповая функция
+    INTO v_sum_salary
+    FROM s_emp
+    WHERE dept_id = v_dept_id;
+  RETURN (v_sum_salary);
+END sum_emp;
