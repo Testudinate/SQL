@@ -1,0 +1,17 @@
+Оператор IF-THEN-ELSIF
+
+пример:
+
+Вычисление одного значения на основе другого
+
+...
+
+IF v_start > 100 THEN
+    RETURN (2 * v_start);
+ELSIF v_start>=50 THEN
+    RETURN (.5 * v_start);
+ELSE
+    RETURN (.0 * v_start);
+END IF;
+
+...
