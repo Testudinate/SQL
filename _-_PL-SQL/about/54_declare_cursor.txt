@@ -1,0 +1,22 @@
+Объявление курсора:синтаксис
+
+DECLARE
+  CURSOR cursor_name IS 
+    select_statement;
+    
+    Не включайте выражение INTO в описание курсора.
+    
+
+Объявление курсора: пример 
+
+  DECLARE
+  ...
+  v_ord_id          s_item.ord_id%TYPE;
+  v_product_id      s_item.product_id%TYPE;
+  v_item_total      NUMBER (11,2);
+  CURSOR item_cursor  IS
+    SELECT product_id, price*quantity
+    FROM s_item
+    WHERE ord_id = v_ord_id;
+  BEGIN
+  ...
