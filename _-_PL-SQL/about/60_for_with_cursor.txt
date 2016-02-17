@@ -1,0 +1,17 @@
+Циклы FOR с курсорами: синтаксис
+
+FOR record_name IN cursor_name LOOP
+  statement1;
+  statement2;
+  ...
+END LOOP;
+
+Цикл FOR c курсорами: пример
+
+FOR item_record IN item_cursor LOOP
+  --неявное открытие и неявная выбока
+  v_order_total := v_order_total + (item_record.price * item_record.quantity);
+  i := i + 1;
+  product_id_table (i) := item_record.product_id;
+  order_total_table (i) := v_order_total;
+END LOOP; --неявное закрытие
