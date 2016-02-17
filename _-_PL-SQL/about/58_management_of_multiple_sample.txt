@@ -1,0 +1,31 @@
+Управление многократной выборкой
+
+-Для обработки нескольких строк из явного курсора можно организовать цикл.
+-При каждом выполнении цикла извлекается одна строка
+-Проверку на неудачную выборку можно сделать с помощью атрибута %NOTFOUND
+-Успех каждой выборки можно проверить с помощью явного курсора
+
+1) Атрибут %ISOPEN:пример
+
+-Выборка строк возможна только при открытом курсоре
+-Прежде, чем выполнять операцию FETCH, проверьте, открыт ли курсор, с помощью атрибута %ISOPEN
+
+IF item_cursor%ISOPEN THEN
+  FETCH item_cursor INTO v_quantity, v_price;
+ELSE
+  OPEN item_cursor;
+END IF;
+
+2) Атрибут %NOTFOUND и %ROWCOUNT:пример
+
+-Выбрать точное кол-во строк можно с помощью атрибута курсора %ROWCOUNT.
+-Момент выхода из цикла определяется по атрибуту курсора %NOTFOUND.
+
+LOOP 
+  FETCH item_cursor
+    INTO v_product_id,v_item_total;
+  EXIT WHEN item_cursor%ROWCOUNT > 5
+         OR item_cursor%NOTFOUND;
+  v_order_total := v_order_total + v_item_total;
+  ...
+END LOOP;
