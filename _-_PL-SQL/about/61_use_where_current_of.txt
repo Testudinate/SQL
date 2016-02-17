@@ -1,0 +1,21 @@
+Предложение WHERE CURRENT OF
+
+Требует предварительной блокировки строк с помощью предложения FOR UPDATE в запросе.
+
+SELECT ... FROM ... FOR UPDATE [ OF column-reference][NOWAIT]
+
+-Используется для ссылки на текущую строку явного курсора.
+-Если используется предложение FOR UPDATE, фиксация транзакций (COMMIT) между выборками из явного курсора не допускается.
+
+CURSOR emp_cursor IS 
+  SELECT ...
+  FOR UPDATE;
+BEGIN
+  ...
+  FOR emp_record IN emp_cursor LOOP
+    UPDATE
+      WHERE CURRENT OF emp_cursor;
+    ...
+  END LOOP;
+  COMMIT;
+END;
