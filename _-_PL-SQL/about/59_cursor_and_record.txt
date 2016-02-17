@@ -1,0 +1,30 @@
+Курсоры и записи:пример
+
+Строки из активного набора строк удобно отрабатывать, выбирая значения в запись (RECORD) pl\sql
+
+CURSOR emp_cursor IS
+  SELECT id, salary,start_date, rowid
+    FROM s_emp
+   WHERE dept_id = 41;
+  emp_recordemp_cursor%ROWTYPE;
+BEGIN
+  OPEN emp_cursor;
+...
+  FETCH emp_cursor INTO emp_record;
+  
+Курсоры с параметрами : синтаксис
+
+CURSOR cursor_name
+  [(parameter_name datatype, ...)]
+  IS
+  select_statement;
+
+Курсоры с параметрами: пример
+
+CURSOR emp_cursor
+  (v_dept NUMBER, v_job VARCHAR2) IS
+  SELECT last_name,salary,start_date 
+    FROM s_emp
+   WHERE dept_id = v_dept
+     AND title = v_job;
+
