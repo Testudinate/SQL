@@ -1,0 +1,34 @@
+Объявление курсорной переменной 
+
+Курсорные переменные имеют ссылочный тип. С помощью такого типа можно именовать области хранения данных во время выполнения
+программы. Чтобы воспользоваться ссылочным типом, необходимо сначала объявить переменную а затем выделить область паметя.
+
+TYPE имя_типа IS REF CURSOR [RETURN возвращаемый_тип];
+
+имя_типа - это имя нового ссылочного типа, а возвращаемый_тип - тип записи, указывающий типы списка выбора, которые
+в итоге будут вовзращаться курсорной переменной.
+
+Пример объявления курсорной переменной 
+
+DECLARE 
+  --Описание при помощи %ROWTYPE
+  TYPE t_studentRef IS REF CURSOR
+  RETURN students%ROWTYPE;
+  --Определяем новый тип записи,
+  TYPE t_NameRecord IS RECORD (
+    first_name student.first_name%TYPE,
+    last_name student.last_name%TYPE);
+  --переменную этого типа 
+  v_NameRecord t_NameRecord;
+  --и курсорную переменную, использующую этот тип записи
+  TYPE t_NamesRef IS REF CURSOR
+    RETURN t_NameRecord;
+  --При помощи %TYPE можно объявить еще один тип.
+  TYPE t_NamesRef2 IS REF CURSOR
+    RETURN t_NameRecord%TYPE;
+  --Объявим курсорные переменну.
+  v_StudentCV t_StudefitRef;
+  v_NameCV t_NamesRef;
+  
+  
+
