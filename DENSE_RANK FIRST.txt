@@ -1,0 +1,1 @@
+MAX (list_name) KEEP (DENSE_RANK FIRST ORDER BY id DESC)
