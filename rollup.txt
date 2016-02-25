@@ -2,3 +2,5 @@ http://www.oracloid.ru/index.php?t=201
 
 
 http://orasource.ru/materialyi-po-pl-sql/oracle-sql-originalnyie-resheniya.html
+
+http://gorodovets.blogspot.ru/2013/01/sql-oracle.html
