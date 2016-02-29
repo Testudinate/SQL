@@ -1,0 +1,25 @@
+Распространение исключений в вызывающую среду
+
+DECLARE 
+  E_product_r   EXCEPTION;
+  E_integrity   EXCEPTION;
+  PRAGMA EXCEPTION_INIT (E_product_r, -2222);
+...
+BEGIN
+  FOR I IN emp_cursor LOOP
+      BEGIN
+        SELECT ...;
+        UPDATE ...;
+        ...
+        RAISE E_integrity;
+        ...
+        exception
+        WHEN E_product_r THEN ...
+        WHEN E_integrity THEN 
+        END;
+  END LOOP;
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN ...
+  WHEN OTHERS THEN ...
+...
+END;
