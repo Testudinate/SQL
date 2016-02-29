@@ -35,5 +35,46 @@ BEGIN
     v_Numbers(v_count):=v_count;
     v_strings(v_count):='Element#'||v_count;
   END LOOP;
-  --Внесём изменения
+  --Внесём изменения данных все 1000 элементов с помощью оператора FORALL
+  FORALL v_count IN 1..1000
+    INSERT INTO temp_table VALUES
+      (v_numbers(v_count), v_string(v_count));
+      --теперь должно быть 1000 строк
+    PrintTotalRows('After first insert');
+    --снова внесём в базу данных элементы с 501 по 1000
+  FORALL v_count IN 501..1000
+    INSERT INTO temp_table VALUES
+      (v_Numbers(v_count), v_strings(v_count));
+    --Теперь у нас должно быть 1500 строк 
+    PrintTotalRows('After second insert');
+    --обновим все строки
+  FORALL v_count IN 1..1000
+    UPDATE temp_table
+      SET char_col = 'Changed!';
+      WHERE num_col = v_NUmbers(v_count);
+  --Несмотря на то, что имеется только 1000 элементов, этот оператор 
+  --обновляет 1500 строк, так как предложение WHERE соответствует 2 строкам
+  --для каждой из последних 500 строк.
   
+  DBMS_OUTPUT.PUT_LINE(
+    'Update processed'|| SQL%ROWCOUNT||'rows.');
+    
+ --Аналогично, этот DELETE удалит 300 строк
+ FORALL v_count IN 401..600
+  DELETE FROM tempjtable
+  WHERE num_col = v_Numbers(v_count);
+ --Поэтому должно остаться 1200 строк.
+ PrintTotalRows('After delete');
+ 
+END;
+
+Результатом выполнения примера будет следующее:
+
+After first insert: Count is 1000
+After second insert: Count is 1500
+Update processed 1500 rows
+After delete: count 1200
+
+FORALL синтаксис аналогичен циклу FOR. Он может использоваться для 
+сборных конструкций любого типа и для операторов INSERT, DELETE и UPDATE.
+Определяемый в FORALL диапазон должен быть непрерывным, и все элементы в этом диапазоне должны существовать.
