@@ -1,0 +1,16 @@
+OPEN FOR
+
+Запросы выполяются с помощью оператора OPEN FOR аналогично курсорным переменным.
+Различие состоит в том, что строка, содержащая запрос, может быть переменной PL\SQL, а не литералом.
+
+К получаемой курсорной переменной можно обращаться так же, как и к любой другой переменной. 
+
+Для связывания используется предложение USING, так же как в операторе EXECUTE IMMEDIATE.
+
+BEGIN 
+  v_sqlstatement:='SELECT * FROM students'||p_whereclause;
+    OPEN v_returncursor FOR v_sqlstatement;
+  
+  v_sqlstatement:='SELECT * FROM students WHERE major =:m';
+    OPEN v_returncursor FOR v_sqlstatement USING p_major;
+  
