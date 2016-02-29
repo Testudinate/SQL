@@ -35,4 +35,5 @@ BEGIN
     v_Numbers(v_count):=v_count;
     v_strings(v_count):='Element#'||v_count;
   END LOOP;
+  --Внесём изменения
   
