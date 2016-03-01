@@ -28,3 +28,23 @@ SELECT *
                    GROUP BY value
                 )
  ORDER BY value;
+ 
+ Несколько способов удалить дубликаты:
+ 
+ 1)  -- Вариант с NOT IN. 
+     -- Остаются строки с минимальным значением поля DUPLICATE_ID среди дубликатов.
+ DELETE FROM TEST_DUPLICATE
+  WHERE duplicate_id NOT IN ( SELECT MIN(duplicate_id)
+                                FROM TEST_DUPLICATE
+                               GROUP BY value );
+                               
+ 2)  -- То же самое через NOT EXISTS.
+delete TEST_DUPLICATE d
+where not exists (
+        select 1
+        from (select min(duplicate_id) duplicate_id
+              from TEST_DUPLICATE
+              group by value
+             ) d2
+        where d.duplicate_id = d2.duplicate_id
+      );  
