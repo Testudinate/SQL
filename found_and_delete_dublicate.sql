@@ -39,12 +39,47 @@ SELECT *
                                GROUP BY value );
                                
  2)  -- То же самое через NOT EXISTS.
-delete TEST_DUPLICATE d
-where not exists (
-        select 1
-        from (select min(duplicate_id) duplicate_id
-              from TEST_DUPLICATE
-              group by value
-             ) d2
-        where d.duplicate_id = d2.duplicate_id
-      );  
+ DELETE TEST_DUPLICATE d
+  WHERE NOT exists ( SELECT 1
+                      FROM (SELECT MIN(duplicate_id) duplicate_id
+                              FROM TEST_DUPLICATE
+                             GROUP BY value
+                           ) d2
+                     WHERE d.duplicate_id = d2.duplicate_id ); 
+  3) -- Вариант с использованием аналитической функции row_number()
+ DELETE TEST_DUPLICATE
+  WHERE duplicate_id IN ( SELECT duplicate_id
+                            FROM (SELECT duplicate_id
+                                       , row_number() over (PARTITION BY value order BY NULL) rw
+                                    FROM TEST_DUPLICATE
+                                 )
+                           WHERE rw > 1
+                         );
+  -- В верхнем запросе нельзя сказать, какая именно строка из дубликатов останется, 
+  -- из-за условия "ORDER BY NULL". Для управления этим процессом 
+  -- можно отсортировать выборку в пределах каждого неуникального значения 
+  -- так, чтобы строка, которую хотелось бы оставить, была первой. 
+  -- Например, оставить строки с минимальным значением первичного ключа:                       
+
+  4) 
+ DELETE TEST_DUPLICATE
+  WHERE duplicate_id IN ( SELECT duplicate_id
+                            FROM (SELECT duplicate_id
+                                       , row_number() over (PARTITION BY value order BY duplicate_id) rw
+                                    FROM TEST_DUPLICATE
+                                 )
+                           WHERE rw > 1
+                         );
+                         
+  Исключительный случай: 
+
+  Если в таблице нет уникального ключа или индекса, по которому можно отсеивать дубликаты 
+  (в примере используется уникальность поля TEST_DUPLICATE.duplicate_id), то можно использовать 
+  псевдо столбец ROWID, значения которого гарантированно уникальны, т.е., например, 
+  первый запрос на удаление дубликатов через NOT IN может выглядеть так: 
+  
+ DELETE TEST_DUPLICATE
+  WHERE rowid NOT IN ( SELECT MIN(rowid)
+                         FROM TEST_DUPLICATE
+                        GROUP BY value
+                     );  
