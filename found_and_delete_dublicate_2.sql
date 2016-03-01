@@ -22,6 +22,7 @@ INSERT INTO drop_test SELECT object_id, object_name FROM user_objects WHERE rown
 INSERT INTO drop_test SELECT object_id, object_name FROM user_objects WHERE rownum <3001;
 INSERT INTO drop_test SELECT object_id, object_name FROM user_objects WHERE rownum <3001;
 
+4) --поиск дублей:
 SELECT *
   FROM DROP_TEST
  WHERE txt IN ( SELECT txt
