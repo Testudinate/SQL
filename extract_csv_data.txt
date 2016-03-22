@@ -1,0 +1,19 @@
+Extract id column from file *.csv for use in your query
+
+For example (we have some file):
+
+id
+1
+2
+3
+4
+5
+6
+
+Open file on notepad++
+
+step 1 : replace \r\n on \n
+step 2 : raplace \n on ,
+
+Result:
+1,2,3,4,5,6, 
