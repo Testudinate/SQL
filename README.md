@@ -29,3 +29,8 @@ https://www.toadworld.com/platforms/oracle/w/wiki/2691.dbms-lob-write
 
 Колекции
 http://habrahabr.ru/post/254355/
+
+
+http://www.lynda.com/promo/trial/default.aspx?lpk35=8006&btn=supbtncl_categorypagev5
+
+course! 
