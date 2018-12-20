@@ -1,1 +1,36 @@
 http://obninskpro.ru/index.php/bazy-dannykh/70-ustanavlivaem-servis-firebird-i-subd-ibexpert
+
+
+
+select RDB$FIELD_NAME,RDB$RELATION_NAME  from rdb$relation_fields
+where RDB$RELATION_NAME in (select RDB$RELATION_NAME from RDB$RELATIONS
+where (RDB$SYSTEM_FLAG = 0) AND (RDB$RELATION_TYPE = 0)
+order by RDB$RELATION_NAME) AND RDB$FIELD_NAME IN (
+'TREATDATE',
+'CREATETIME',
+'FILIAL',
+'DOCTOR',
+'HISTNUM',
+'BDATE',
+'GENDER',
+'NAL',
+'MKBCODE',
+'NAMEPLACE',
+'GROUPNAME',
+'NAMEPARAMS',
+'VALUEOUT',
+'MINNORMVALUE',
+'MAXNORMVALUE',
+'NORMTEXT',
+'TYPEPARAMS',
+'PLACEID',
+'PROTOCOLID',
+'TREATCODE',
+'CODEPARAMS',
+'DCODE',
+'PCODE',
+'ID',
+'ORGANID',
+'GROUPID',
+'ORGANNAME'
+)
